@@ -3,8 +3,10 @@ from sympy import symbols, Eq
 from itertools import combinations
 
 def load_ontology(file_path):
-    """Loads an OWL ontology from the given file path."""
+    """Loads an OWL ontology from the given file path and runs a reasoner."""
     onto = get_ontology(file_path).load()
+    with onto:
+        sync_reasoner_pellet()  # Run the Pellet reasoner to check for contradictions
     return onto
 
 def clean_axiom(axiom):
@@ -22,6 +24,31 @@ def extract_axioms(onto):
     for prop in onto.object_properties():
         axioms.append(f'∀x ∀y ({clean_axiom(prop.name)}(x, y) → {clean_axiom(str(prop.domain))} ∧ {clean_axiom(str(prop.range))})')
     return axioms
+
+def check_reasoner_inconsistencies(onto):
+    """Checks for inconsistencies using the OWL reasoner by detecting inferred owl:Nothing classifications and disjoint class violations."""
+    inconsistencies = []
+    
+    # Print all disjoint classes for debugging
+    for cls in onto.classes():
+        print(f"Class: {cls.name}, Disjoint With: {[c.name for c in cls.disjoint_with]}")
+    
+    # Check for owl:Nothing inferences
+    for cls in onto.classes():
+        if owl.Nothing in cls.is_a:
+            print(f"\nOntology is inconsistent! {cls.name} is inferred to be owl:Nothing (contradiction detected by Pellet reasoner).")
+            inconsistencies.append(f"Class {cls.name} is inconsistent (inferred as owl:Nothing by Pellet).")
+    
+    # Check for disjoint class violations
+    for cls1 in onto.classes():
+        if hasattr(cls1, "disjoint_with") and cls1.disjoint_with:
+            for cls2 in cls1.disjoint_with:
+                for individual in cls1.instances():
+                    if individual in cls2.instances():
+                        print(f"\nOntology is inconsistent! {individual} is classified as both {cls1.name} and {cls2.name}, which are disjoint classes.")
+                        inconsistencies.append(f"{individual} violates disjoint class constraint between {cls1.name} and {cls2.name}.")
+    
+    return inconsistencies
 
 def check_contradictions_and_inferences(axioms):
     """Checks for contradictions and valid inferences by comparing axioms logically."""
@@ -58,7 +85,7 @@ def check_contradictions_and_inferences(axioms):
     
     return contradictions, inferences
 
-def save_results(axioms, contradictions, inferences, output_file):
+def save_results(axioms, contradictions, inferences, inconsistencies, output_file):
     """Saves results to a file."""
     with open(output_file, "w") as f:
         f.write("Generated Premises:\n")
@@ -79,6 +106,13 @@ def save_results(axioms, contradictions, inferences, output_file):
                 f.write(f"Inference: {inf[0]} ∧ {inf[1]} → Conclusion\n")
         else:
             f.write("No valid inferences found.\n")
+        
+        if inconsistencies:
+            f.write("\nOntology Reasoner Detected Inconsistencies:\n")
+            for inc in inconsistencies:
+                f.write(f"{inc}\n")
+        else:
+            f.write("No inconsistencies detected by Pellet reasoner.\n")
 
 if __name__ == "__main__":
     import sys
@@ -92,8 +126,9 @@ if __name__ == "__main__":
     
     onto = load_ontology(onto_path)
     axioms = extract_axioms(onto)
+    inconsistencies = check_reasoner_inconsistencies(onto)
     contradictions, inferences = check_contradictions_and_inferences(axioms)
     
-    save_results(axioms, contradictions, inferences, output_file)
+    save_results(axioms, contradictions, inferences, inconsistencies, output_file)
     
     print("\nResults saved to results.txt")
