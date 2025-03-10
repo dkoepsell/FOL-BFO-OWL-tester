@@ -8,3 +8,4 @@ A Python package for extracting and analyzing first-order predicate logic axioms
 Python 3.6+
 owlready2
 sympy
+itertools
