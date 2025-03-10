@@ -1,0 +1,338 @@
+## Sample Output, LegalFacts.owl
+Enter the path to the OWL ontology file: LegalFacts.owl
+* Owlready2 * Running Pellet...
+    java -Xmx2000M -cp /home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/slf4j-log4j12-1.6.4.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/jena-iri-0.9.5.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/jgrapht-jdk1.5.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/jena-arq-2.10.0.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/xml-apis-1.4.01.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/pellet-2.3.1.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/xercesImpl-2.10.0.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/jena-core-2.10.0.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/aterm-java-1.6.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/jena-tdb-0.10.0.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/log4j-core-2.19.0.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/jcl-over-slf4j-1.6.4.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/log4j-api-2.19.0.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/log4j-1.2-api-2.19.0.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/slf4j-api-1.6.4.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/httpclient-4.2.3.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/httpcore-4.2.2.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/commons-codec-1.6.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/antlr-runtime-3.2.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/owlapi-distribution-3.4.3-bin.jar:/home/koeppy/.local/lib/python3.9/site-packages/owlready2/pellet/antlr-3.2.jar pellet.Pellet realize --loader Jena --input-format N-Triples --ignore-imports /tmp/tmpxdot4vww
+* Owlready2 * Pellet took 1.3645319938659668 seconds
+* Owlready * (NB: only changes on entities loaded in Python are shown, other changes are done but not listed)
+Generated Premises:
+1: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant)
+2: ∀x (Evidence(x) → LegalFacts_InformationContentEntity)
+3: ∀x (Situation(x) → A_1_1_Occurrent)
+4: ∀x (Fact(x) → LegalFacts_Situation)
+5: ∀x (LegalFact(x) → LegalFacts_Fact)
+6: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant)
+7: ∀x (TrierOfFact(x) → LegalFacts_Role)
+8: ∀x (Process(x) → A_1_1_Occurrent)
+9: ∀x (LegalCase(x) → LegalFacts_Process)
+10: ∀x (Reality(x) → owl_Thing)
+11: ∀x (SocialReality(x) → LegalFacts_Reality)
+12: ∀x (LegalReality(x) → LegalFacts_SocialReality)
+13: ∀x (RealWorld(x) → LegalFacts_Reality)
+14: ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process)
+15: ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process)
+16: ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation)
+17: ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact)
+18: ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact)
+19: ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase)
+20: ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality)
+21: ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact)
+22: ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact)
+23: ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL)
+24: ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence)
+25: ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL)
+
+Testing for Contradictions and Inferences...
+
+No contradictions found.
+
+Valid Inferences:
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x (Evidence(x) → LegalFacts_InformationContentEntity) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x (Situation(x) → A_1_1_Occurrent) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x (Fact(x) → LegalFacts_Situation) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x (LegalFact(x) → LegalFacts_Fact) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x (TrierOfFact(x) → LegalFacts_Role) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x (Process(x) → A_1_1_Occurrent) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x (LegalCase(x) → LegalFacts_Process) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x (Reality(x) → owl_Thing) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x (SocialReality(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x (LegalReality(x) → LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x (RealWorld(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x (InformationContentEntity(x) → A_1_1_GenericallyDependentContinuant) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x (Situation(x) → A_1_1_Occurrent) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x (Fact(x) → LegalFacts_Situation) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x (LegalFact(x) → LegalFacts_Fact) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x (TrierOfFact(x) → LegalFacts_Role) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x (Process(x) → A_1_1_Occurrent) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x (LegalCase(x) → LegalFacts_Process) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x (Reality(x) → owl_Thing) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x (SocialReality(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x (LegalReality(x) → LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x (RealWorld(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x (Evidence(x) → LegalFacts_InformationContentEntity) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x (Fact(x) → LegalFacts_Situation) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x (LegalFact(x) → LegalFacts_Fact) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x (TrierOfFact(x) → LegalFacts_Role) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x (Process(x) → A_1_1_Occurrent) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x (LegalCase(x) → LegalFacts_Process) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x (Reality(x) → owl_Thing) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x (SocialReality(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x (LegalReality(x) → LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x (RealWorld(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x (Situation(x) → A_1_1_Occurrent) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x (LegalFact(x) → LegalFacts_Fact) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x (TrierOfFact(x) → LegalFacts_Role) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x (Process(x) → A_1_1_Occurrent) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x (LegalCase(x) → LegalFacts_Process) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x (Reality(x) → owl_Thing) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x (SocialReality(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x (LegalReality(x) → LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x (RealWorld(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x (Fact(x) → LegalFacts_Situation) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x (TrierOfFact(x) → LegalFacts_Role) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x (Process(x) → A_1_1_Occurrent) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x (LegalCase(x) → LegalFacts_Process) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x (Reality(x) → owl_Thing) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x (SocialReality(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x (LegalReality(x) → LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x (RealWorld(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x (LegalFact(x) → LegalFacts_Fact) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x (TrierOfFact(x) → LegalFacts_Role) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x (Process(x) → A_1_1_Occurrent) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x (LegalCase(x) → LegalFacts_Process) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x (Reality(x) → owl_Thing) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x (SocialReality(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x (LegalReality(x) → LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x (RealWorld(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x (Role(x) → A_1_1_SpecificallyDependentContinuant) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x (Process(x) → A_1_1_Occurrent) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x (LegalCase(x) → LegalFacts_Process) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x (Reality(x) → owl_Thing) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x (SocialReality(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x (LegalReality(x) → LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x (RealWorld(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x (TrierOfFact(x) → LegalFacts_Role) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x (LegalCase(x) → LegalFacts_Process) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x (Reality(x) → owl_Thing) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x (SocialReality(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x (LegalReality(x) → LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x (RealWorld(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x (Process(x) → A_1_1_Occurrent) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x (LegalCase(x) → LegalFacts_Process) ∧ ∀x (Reality(x) → owl_Thing) → Conclusion
+Inference: ∀x (LegalCase(x) → LegalFacts_Process) ∧ ∀x (SocialReality(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (LegalCase(x) → LegalFacts_Process) ∧ ∀x (LegalReality(x) → LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (LegalCase(x) → LegalFacts_Process) ∧ ∀x (RealWorld(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (LegalCase(x) → LegalFacts_Process) ∧ ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (LegalCase(x) → LegalFacts_Process) ∧ ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (LegalCase(x) → LegalFacts_Process) ∧ ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) → Conclusion
+Inference: ∀x (LegalCase(x) → LegalFacts_Process) ∧ ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (LegalCase(x) → LegalFacts_Process) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (LegalCase(x) → LegalFacts_Process) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x (LegalCase(x) → LegalFacts_Process) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (LegalCase(x) → LegalFacts_Process) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (LegalCase(x) → LegalFacts_Process) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (LegalCase(x) → LegalFacts_Process) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x (LegalCase(x) → LegalFacts_Process) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x (LegalCase(x) → LegalFacts_Process) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x (Reality(x) → owl_Thing) ∧ ∀x (SocialReality(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (Reality(x) → owl_Thing) ∧ ∀x (LegalReality(x) → LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (Reality(x) → owl_Thing) ∧ ∀x (RealWorld(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (Reality(x) → owl_Thing) ∧ ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (Reality(x) → owl_Thing) ∧ ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (Reality(x) → owl_Thing) ∧ ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) → Conclusion
+Inference: ∀x (Reality(x) → owl_Thing) ∧ ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (Reality(x) → owl_Thing) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (Reality(x) → owl_Thing) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x (Reality(x) → owl_Thing) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (Reality(x) → owl_Thing) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (Reality(x) → owl_Thing) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (Reality(x) → owl_Thing) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x (Reality(x) → owl_Thing) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x (Reality(x) → owl_Thing) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x (SocialReality(x) → LegalFacts_Reality) ∧ ∀x (LegalReality(x) → LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (SocialReality(x) → LegalFacts_Reality) ∧ ∀x (RealWorld(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (SocialReality(x) → LegalFacts_Reality) ∧ ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (SocialReality(x) → LegalFacts_Reality) ∧ ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (SocialReality(x) → LegalFacts_Reality) ∧ ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) → Conclusion
+Inference: ∀x (SocialReality(x) → LegalFacts_Reality) ∧ ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (SocialReality(x) → LegalFacts_Reality) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (SocialReality(x) → LegalFacts_Reality) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x (SocialReality(x) → LegalFacts_Reality) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (SocialReality(x) → LegalFacts_Reality) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (SocialReality(x) → LegalFacts_Reality) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (SocialReality(x) → LegalFacts_Reality) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x (SocialReality(x) → LegalFacts_Reality) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x (SocialReality(x) → LegalFacts_Reality) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x (LegalReality(x) → LegalFacts_SocialReality) ∧ ∀x (RealWorld(x) → LegalFacts_Reality) → Conclusion
+Inference: ∀x (LegalReality(x) → LegalFacts_SocialReality) ∧ ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (LegalReality(x) → LegalFacts_SocialReality) ∧ ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (LegalReality(x) → LegalFacts_SocialReality) ∧ ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) → Conclusion
+Inference: ∀x (LegalReality(x) → LegalFacts_SocialReality) ∧ ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (LegalReality(x) → LegalFacts_SocialReality) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (LegalReality(x) → LegalFacts_SocialReality) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x (LegalReality(x) → LegalFacts_SocialReality) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (LegalReality(x) → LegalFacts_SocialReality) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (LegalReality(x) → LegalFacts_SocialReality) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (LegalReality(x) → LegalFacts_SocialReality) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x (LegalReality(x) → LegalFacts_SocialReality) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x (LegalReality(x) → LegalFacts_SocialReality) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x (RealWorld(x) → LegalFacts_Reality) ∧ ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (RealWorld(x) → LegalFacts_Reality) ∧ ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x (RealWorld(x) → LegalFacts_Reality) ∧ ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) → Conclusion
+Inference: ∀x (RealWorld(x) → LegalFacts_Reality) ∧ ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (RealWorld(x) → LegalFacts_Reality) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (RealWorld(x) → LegalFacts_Reality) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x (RealWorld(x) → LegalFacts_Reality) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x (RealWorld(x) → LegalFacts_Reality) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x (RealWorld(x) → LegalFacts_Reality) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x (RealWorld(x) → LegalFacts_Reality) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x (RealWorld(x) → LegalFacts_Reality) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x (RealWorld(x) → LegalFacts_Reality) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) ∧ ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) → Conclusion
+Inference: ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) ∧ ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) → Conclusion
+Inference: ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) ∧ ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x ∀y (hasPart(x, y) → LegalFacts_LegalCase ∧ LegalFacts_Process) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) ∧ ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) → Conclusion
+Inference: ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) ∧ ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x ∀y (participatesIn(x, y) → LegalFacts_Evidence ∧ LegalFacts_Process) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) ∧ ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x ∀y (isAbout(x, y) → LegalFacts_InformationContentEntity ∧ LegalFacts_Situation) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) ∧ ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x ∀y (supports(x, y) → LegalFacts_Evidence ∧ LegalFacts_Fact) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) ∧ ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) → Conclusion
+Inference: ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x ∀y (determines(x, y) → LegalFacts_TrierOfFact ∧ LegalFacts_LegalFact) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) ∧ ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) → Conclusion
+Inference: ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x ∀y (influences(x, y) → LegalFacts_Fact ∧ LegalFacts_LegalCase) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) ∧ ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) → Conclusion
+Inference: ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x ∀y (constitutes(x, y) → LegalFacts_LegalReality ∧ LegalFacts_SocialReality) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) ∧ ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) → Conclusion
+Inference: ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x ∀y (correspondsTo(x, y) → LegalFacts_LegalFact ∧ LegalFacts_Fact) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) ∧ ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) → Conclusion
+Inference: ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x ∀y (appliesTo(x, y) → NULL ∧ LegalFacts_LegalFact) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) ∧ ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) → Conclusion
+Inference: ∀x ∀y (involves(x, y) → LegalFacts_LegalCase ∧ NULL) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
+Inference: ∀x ∀y (presents(x, y) → NULL ∧ LegalFacts_Evidence) ∧ ∀x ∀y (determinesOutcome(x, y) → NULL ∧ NULL) → Conclusion
