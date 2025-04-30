@@ -1,19 +1,25 @@
+import os
 from owlready2 import *
 from sympy import symbols, Eq
 from itertools import combinations
 
 def load_ontology(file_path):
     """Loads an OWL ontology from the given file path and runs a reasoner."""
+    if not os.path.exists(file_path):
+        print(f"Error: Ontology file '{file_path}' not found.")
+        return None
+
     onto = get_ontology(file_path).load()
     with onto:
         try:
-            sync_reasoner_pellet()  # Run Pellet reasoner, catch errors
+            sync_reasoner_pellet()  # Run Pellet reasoner
         except FileNotFoundError:
             print("Error: Java is not installed or missing from system PATH.")
             return None
         except Exception as e:
             print(f"Pellet reasoner encountered an issue: {e}")
             return None
+
     return onto
 
 def clean_axiom(axiom):
@@ -76,24 +82,30 @@ def check_contradictions_and_inferences(axioms):
     return contradictions, inferences
 
 def save_results(axioms, contradictions, inferences, inconsistencies, output_file):
-    """Saves analysis results to a file."""
+    """Ensures static directory exists before saving results."""
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
+
     with open(output_file, "w") as f:
         f.write("Generated Axioms:\n")
-        f.writelines(f"{i+1}: {axiom}\n" for i, axiom in enumerate(axioms))
+        for i, axiom in enumerate(axioms):
+            f.write(f"{i+1}: {axiom}\n")
 
         f.write("\nContradictions Detected:\n")
-        f.writelines(f"Contradictory Pair: {c[0]} <--> {c[1]}\n" for c in contradictions)
+        for c in contradictions:
+            f.write(f"Contradictory Pair: {c[0]} <--> {c[1]}\n")
 
         f.write("\nValid Inferences:\n")
-        f.writelines(f"Inference: {inf[0]} ∧ {inf[1]} → Conclusion\n" for inf in inferences)
+        for inf in inferences:
+            f.write(f"Inference: {inf[0]} ∧ {inf[1]} → Conclusion\n")
 
         f.write("\nOntology Reasoner Inconsistencies:\n")
-        f.writelines(f"{inc}\n" for inc in inconsistencies)
+        for inc in inconsistencies:
+            f.write(f"{inc}\n")
 
 if __name__ == "__main__":
     import sys
     onto_path = sys.argv[1] if len(sys.argv) > 1 else input("Enter the OWL ontology file path: ")
-    output_file = "results.txt"
+    output_file = "static/results.txt"
 
     onto = load_ontology(onto_path)
     if onto:
@@ -102,6 +114,6 @@ if __name__ == "__main__":
         contradictions, inferences = check_contradictions_and_inferences(axioms)
 
         save_results(axioms, contradictions, inferences, inconsistencies, output_file)
-        print("\nResults saved to results.txt")
+        print("\nResults saved to static/results.txt")
     else:
         print("Ontology loading failed. Check your Java installation or ontology file path.")
