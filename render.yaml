@@ -4,7 +4,10 @@ services:
     env: python
     repo: https://github.com/dkoepsell/FOL-BFO-OWL-tester
     branch: main
-    buildCommand: pip install -r requirements.txt
+    buildCommand: |
+      pip install -r requirements.txt
+      curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+      sudo apt install default-jre -y
     startCommand: gunicorn -b 0.0.0.0:8080 app:app
     envVars:
       - key: PORT
