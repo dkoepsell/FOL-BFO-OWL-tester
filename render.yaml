@@ -6,8 +6,10 @@ services:
     branch: main
     buildCommand: |
       pip install -r requirements.txt
-      curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-      sudo apt install default-jre -y
+      wget https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.tar.gz
+      tar -xvzf jdk-17_linux-x64_bin.tar.gz
+      export JAVA_HOME=$(pwd)/jdk-17.0.1
+      export PATH=$JAVA_HOME/bin:$PATH
     startCommand: gunicorn -b 0.0.0.0:8080 app:app
     envVars:
       - key: PORT
