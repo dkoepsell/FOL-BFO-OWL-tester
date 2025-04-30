@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: owlTester
+    env: python
+    repo: https://github.com/dkoepsell/FOL-BFO-OWL-tester
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -b 0.0.0.0:8080 app:app
+    envVars:
+      - key: PORT
+        value: 8080
