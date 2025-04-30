@@ -1,0 +1,4 @@
+flask
+owlready2
+sympy
+gunicorn
