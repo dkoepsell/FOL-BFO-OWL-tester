@@ -6,11 +6,13 @@ services:
     branch: main
     buildCommand: |
       pip install -r requirements.txt
-      wget -O jdk.tar.gz https://corretto.aws/downloads/latest/amazon-corretto-17-x64-linux-jdk.tar.gz
-      tar -xzf jdk.tar.gz
+      wget -O corretto.tar.gz https://corretto.aws/downloads/latest/amazon-corretto-17-x64-linux-jdk.tar.gz
+      tar -xzf corretto.tar.gz
       mv amazon-corretto-17* jdk-17
       export JAVA_HOME=$(pwd)/jdk-17
       export PATH=$JAVA_HOME/bin:$PATH
+      echo "export JAVA_HOME=$(pwd)/jdk-17" >> $HOME/.bashrc
+      echo "export PATH=$JAVA_HOME/bin:$PATH" >> $HOME/.bashrc
     startCommand: gunicorn -b 0.0.0.0:8080 app:app
     envVars:
       - key: PORT
