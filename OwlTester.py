@@ -10,24 +10,9 @@ def load_ontology(file_path):
         return None
 
     onto = get_ontology(file_path).load()
-    with onto:
-        try:
-            sync_reasoner_pellet()  # Run Pellet reasoner
-        except FileNotFoundError:
-            print("Error: Java is not installed or missing from system PATH.")
-            return None
-        except Exception as e:
-            print(f"Pellet reasoner encountered an issue: {e}")
-            return None
+    print("Ontology successfully loaded!")
 
     return onto
-
-def clean_axiom(axiom):
-    """Cleans axiom names by replacing problematic characters."""
-    cleaned = axiom.replace(".", "_").replace("[", "").replace("]", "").replace(" ", "_").replace("None", "NULL")
-    if cleaned[0].isdigit():
-        cleaned = "A_" + cleaned
-    return cleaned
 
 def extract_axioms(onto):
     """Extracts first-order predicate logic axioms, handling complex is_a structures."""
@@ -37,11 +22,11 @@ def extract_axioms(onto):
     axioms = []
     for cls in onto.classes():
         if cls.is_a:
-            axioms.append(f'∀x ({clean_axiom(cls.name)}(x) → {" ∧ ".join(clean_axiom(str(cond)) for cond in cls.is_a)})')
+            axioms.append(f'∀x ({cls.name}(x) → {" ∧ ".join(str(cond) for cond in cls.is_a)})')
 
     for prop in onto.object_properties():
         if prop.domain and prop.range:
-            axioms.append(f'∀x ∀y ({clean_axiom(prop.name)}(x, y) → {clean_axiom(str(prop.domain))} ∧ {clean_axiom(str(prop.range))})')
+            axioms.append(f'∀x ∀y ({prop.name}(x, y) → {prop.domain} ∧ {prop.range})')
 
     return axioms
 
@@ -57,7 +42,7 @@ def check_reasoner_inconsistencies(onto):
             inconsistencies.append(f"Class {cls.name} is inferred as owl:Nothing (contradiction detected).")
 
     for cls1 in onto.classes():
-        if hasattr(cls1, "disjoint_with"):  # Prevent missing attribute error
+        if hasattr(cls1, "disjoint_with"):
             for cls2 in cls1.disjoint_with:
                 for individual in cls1.instances():
                     if individual in cls2.instances():
@@ -116,4 +101,4 @@ if __name__ == "__main__":
         save_results(axioms, contradictions, inferences, inconsistencies, output_file)
         print("\nResults saved to static/results.txt")
     else:
-        print("Ontology loading failed. Check your Java installation or ontology file path.")
+        print("Ontology loading failed. Check your file.")
