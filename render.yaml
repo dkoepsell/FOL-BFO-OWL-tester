@@ -6,13 +6,13 @@ services:
     branch: main
     buildCommand: |
       pip install -r requirements.txt
-      curl -LO https://download.bell-sw.com/java/17.0.8.1+1/bellsoft-jdk17.0.8.1+1-linux-amd64.tar.gz
-      tar -xzf bellsoft-jdk17.0.8.1+1-linux-amd64.tar.gz
-      export JAVA_HOME=$(pwd)/jdk-17.0.8.1
+      curl -LO https://api.adoptium.net/v3/binary/latest/17/ga/linux/x64/jdk/hotspot/normal/eclipse
+      tar -xzf jdk.tar.gz
+      export JAVA_HOME=$(pwd)/jdk-17
       export PATH=$JAVA_HOME/bin:$PATH
     startCommand: gunicorn -b 0.0.0.0:8080 app:app
     envVars:
       - key: PORT
         value: 8080
       - key: JAVA_HOME
-        value: /opt/render/project/src/jdk-17.0.8.1
+        value: /opt/render/project/src/jdk-17
