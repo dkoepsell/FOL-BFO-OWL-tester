@@ -6,14 +6,14 @@ services:
     branch: main
     buildCommand: |
       pip install -r requirements.txt
-      wget -O openjdk.tar.gz https://api.adoptium.net/v3/binary/latest/17/ga/linux/x64/jdk/hotspot/normal/eclipse
-      tar -xvzf openjdk.tar.gz
-      mv jdk-17* jdk-17
-      export JAVA_HOME=$(pwd)/jdk-17
-      export PATH=$JAVA_HOME/bin:$PATH
+      curl -s "https://get.sdkman.io" | bash
+      source "$HOME/.sdkman/bin/sdkman-init.sh"
+      sdk install java 17.0.8-tem
+      export JAVA_HOME="$HOME/.sdkman/candidates/java/current"
+      export PATH="$JAVA_HOME/bin:$PATH"
     startCommand: gunicorn -b 0.0.0.0:8080 app:app
     envVars:
       - key: PORT
         value: 8080
       - key: JAVA_HOME
-        value: /opt/render/project/src/jdk-17
+        value: $HOME/.sdkman/candidates/java/current
