@@ -1,7 +1,17 @@
 from flask import Flask, request, render_template
 import os
 from OwlTester import load_ontology, extract_axioms, check_reasoner_inconsistencies, check_contradictions_and_inferences, save_results
+import os
+import subprocess
 
+# Debugging Java installation
+print("Checking Java installation...")
+java_version = subprocess.run(["java", "-version"], capture_output=True, text=True, shell=True)
+print("Java Version Output:", java_version.stderr)
+
+# Debugging PATH variables
+print("Current PATH:", os.environ.get("PATH"))
+print("JAVA_HOME:", os.environ.get("JAVA_HOME"))
 app = Flask(__name__)
 UPLOAD_FOLDER = "uploads"
 RESULTS_FILE = "static/results.txt"
