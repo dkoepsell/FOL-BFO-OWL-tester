@@ -6,14 +6,13 @@ services:
     branch: main
     buildCommand: |
       pip install -r requirements.txt
-      curl -s "https://get.sdkman.io" | bash
-      source "$HOME/.sdkman/bin/sdkman-init.sh"
-      sdk install java 17.0.8-tem
-      export JAVA_HOME="$HOME/.sdkman/candidates/java/current"
-      export PATH="$JAVA_HOME/bin:$PATH"
+      curl -LO https://download.bell-sw.com/java/17.0.8.1+1/bellsoft-jdk17.0.8.1+1-linux-amd64.tar.gz
+      tar -xzf bellsoft-jdk17.0.8.1+1-linux-amd64.tar.gz
+      export JAVA_HOME=$(pwd)/jdk-17.0.8.1
+      export PATH=$JAVA_HOME/bin:$PATH
     startCommand: gunicorn -b 0.0.0.0:8080 app:app
     envVars:
       - key: PORT
         value: 8080
       - key: JAVA_HOME
-        value: $HOME/.sdkman/candidates/java/current
+        value: /opt/render/project/src/jdk-17.0.8.1
