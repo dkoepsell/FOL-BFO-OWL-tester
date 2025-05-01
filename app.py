@@ -14,15 +14,6 @@ UPLOAD_FOLDER = "uploads"
 RESULTS_FILE = "static/results.txt"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-# Debugging Java installation
-print("Checking Java installation...")
-java_version = subprocess.run(["java", "-version"], capture_output=True, text=True, shell=True)
-print("Java Version Output:", java_version.stderr)
-
-# Debugging PATH variables
-print("Current PATH:", os.environ.get("PATH"))
-print("JAVA_HOME:", os.environ.get("JAVA_HOME"))
-
 @app.route("/", methods=["GET", "POST"])
 def index():
     """Handles file upload and ontology analysis."""
