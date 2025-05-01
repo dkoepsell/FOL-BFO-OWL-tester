@@ -14,3 +14,5 @@ services:
     envVars:
       - key: PORT
         value: 8080
+      - key: JAVA_HOME
+        value: /opt/render/project/src/jdk-17.0.1
