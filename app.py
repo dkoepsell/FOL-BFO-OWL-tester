@@ -1,8 +1,18 @@
 from flask import Flask, request, render_template
 import os
-from OwlTester import load_ontology, extract_axioms, check_reasoner_inconsistencies, check_contradictions_and_inferences, save_results
-import os
 import subprocess
+from OwlTester import (
+    load_ontology,
+    extract_axioms,
+    check_reasoner_inconsistencies,
+    check_contradictions_and_inferences,
+    save_results,
+)
+
+app = Flask(__name__)
+UPLOAD_FOLDER = "uploads"
+RESULTS_FILE = "static/results.txt"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Debugging Java installation
 print("Checking Java installation...")
@@ -12,14 +22,10 @@ print("Java Version Output:", java_version.stderr)
 # Debugging PATH variables
 print("Current PATH:", os.environ.get("PATH"))
 print("JAVA_HOME:", os.environ.get("JAVA_HOME"))
-app = Flask(__name__)
-UPLOAD_FOLDER = "uploads"
-RESULTS_FILE = "static/results.txt"
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    """Handles file upload and analysis."""
+    """Handles file upload and ontology analysis."""
     if request.method == "POST":
         file = request.files["ontology"]
         if file:
@@ -27,10 +33,13 @@ def index():
             file.save(file_path)
             
             onto = load_ontology(file_path)
+            if not onto:
+                return "Error: Ontology loading failed. Please check the file format."
+
             axioms = extract_axioms(onto)
             inconsistencies = check_reasoner_inconsistencies(onto)
             contradictions, inferences = check_contradictions_and_inferences(axioms)
-            
+
             save_results(axioms, contradictions, inferences, inconsistencies, RESULTS_FILE)
             
             return render_template("result.html", file=RESULTS_FILE)
@@ -40,8 +49,12 @@ def index():
 @app.route("/results")
 def results():
     """Displays saved results."""
+    if not os.path.exists(RESULTS_FILE):
+        return "Error: No results available. Please run an analysis first."
+    
     with open(RESULTS_FILE, "r") as f:
         content = f.read()
+    
     return f"<pre>{content}</pre>"
 
 if __name__ == "__main__":
