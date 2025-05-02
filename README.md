@@ -1,5 +1,5 @@
 # FOL-BFO-OWL-tester
-OWL Ontology Checker
+[OWL Ontology Checker](https://owl-tester-service-davidkoepsell.replit.app/)
 Overview
 This script analyzes an OWL ontology, extracts logical axioms, detects contradictions, and validates inferences using logical reasoning. It also checks for ontology inconsistencies using the Pellet reasoner.
 Features
